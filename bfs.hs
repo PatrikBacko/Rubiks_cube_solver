@@ -1,9 +1,8 @@
 module Bfs where
 
-import Cube ( Cube, solved )
-import Moves ( moves )
+import Cube
+import Moves
 import qualified Data.Set as Set
--- import qualified Data.Sequence as Seq
 
 data State = State Cube State String | Nill
 
