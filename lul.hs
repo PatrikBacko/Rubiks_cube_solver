@@ -7,7 +7,7 @@ import qualified Data.Sequence as Seq
 data State = State Cube State String | Nill
 
 applyMoves :: Cube -> [(Cube, String)]
-applyMoves cube = map (\(name,move) -> (move cube, name)) moves
+applyMoves cube = map (\(name,move) -> (move cube, name)) basicMoves
 
 bfs :: Cube -> Set.Set Cube -> Seq.Seq State -> State
 bfs goal seen queue
@@ -36,12 +36,11 @@ solveBfs cube = reverse $ extractSolution (bfs solved Set.empty (Seq.singleton (
 -- import Cube
 -- import Moves
 -- import qualified Data.Set as Set
--- -- import qualified Data.Sequence as Seq
 
 -- data State = State Cube State String | Nill
 
 -- applyMoves :: Cube -> [(Cube, String)]
--- applyMoves cube = map (\(name,move) -> (move cube, name)) moves
+-- applyMoves cube = map (\(name,move) -> (move cube, name)) basicMoves
 
 -- bfs :: Cube -> Set.Set Cube -> [State] -> State
 -- bfs goal seen (state@(State cube _ _):qs)

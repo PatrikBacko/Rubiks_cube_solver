@@ -1,22 +1,26 @@
--- module Queue where
-
--- import Cube
-
--- data State = State Cube State String | Nill
--- data Queue = Queue Head Tail deriving (Show)
--- data Node = Node State Next Prev | Empty deriving (Show)
-
--- type Head = Node
--- type Tail = Node
--- type Next = Node
--- type Prev = Node
+module Queue where
 
 
--- empty :: Queue
--- empty = Queue (Node Nill Empty Empty) (Node Nill Empty Empty)
+type Queue a = ([a], [a])
 
--- -- singleton :: State -> Queue
--- -- singleton State = Queue (Node undefined Nill Nill) (Node undefined Nill Nill)
+empty :: Queue a
+empty = ([], [])
 
--- insert :: State -> Queue -> Queue
--- insert state (Queue head tail) = Queue head (Node state tail Empty)
+isEmpty :: Queue a -> Bool
+isEmpty ([], []) = True
+isEmpty _ = False
+
+singleton :: a -> Queue a
+singleton x = ([x], [])
+
+enqueue :: a -> Queue a -> Queue a
+enqueue x (xs, ys) = (xs, x:ys)
+
+dequeue :: Queue a -> (a, Queue a)
+dequeue ([], []) = error "empty queue"
+dequeue ([], ys) = dequeue (reverse ys, [])
+dequeue ((x:xs), ys) = (x, (xs, ys))
+
+enqueueList :: [a] -> Queue a -> Queue a
+enqueueList [] q = q
+enqueueList (x:xs) q = enqueueList xs (enqueue x q)

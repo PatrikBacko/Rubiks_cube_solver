@@ -20,8 +20,8 @@ import Cube
 --     ]
 
 -- maybe pridať datastructure Move, ktorá bude obsahovať názov a funkciu
-moves :: [(String ,Cube -> Cube)]
-moves = [
+basicMoves :: [(String ,Cube -> Cube)]
+basicMoves = [
     ("up", up), 
     ("down", down), 
     ("left", left), 
