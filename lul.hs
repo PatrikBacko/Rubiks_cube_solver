@@ -9,10 +9,10 @@ data State = State Cube State String | Nill
 applyMoves :: Cube -> [(Cube, String)]
 applyMoves cube = map (\(name,move) -> (move cube, name)) basicMoves
 
-bfs :: Cube -> Set.Set Cube -> Seq.Seq State -> State
-bfs goal seen queue
-    | cube == goal = state
-    | otherwise = bfs goal newSeen newQueue
+bfs :: (Cube -> Bool) -> Set.Set Cube -> Seq.Seq State -> State
+bfs isGoal seen queue
+    | isGoal cube = state
+    | otherwise = bfs isGoal newSeen newQueue
         where
             state@(State cube _ _) = Seq.index queue 0 
             qs = Seq.drop 1 queue 
@@ -25,7 +25,7 @@ extractSolution (State _ Nill move) = []
 extractSolution (State _ state move) = move:extractSolution state
 
 solveBfs :: Cube -> [String]
-solveBfs cube = reverse $ extractSolution (bfs solved Set.empty (Seq.singleton (State cube Nill "")))
+solveBfs cube = reverse $ extractSolution (bfs isSolved Set.empty (Seq.singleton (State cube Nill "")))
 
 
 
@@ -42,10 +42,10 @@ solveBfs cube = reverse $ extractSolution (bfs solved Set.empty (Seq.singleton (
 -- applyMoves :: Cube -> [(Cube, String)]
 -- applyMoves cube = map (\(name,move) -> (move cube, name)) basicMoves
 
--- bfs :: Cube -> Set.Set Cube -> [State] -> State
--- bfs goal seen (state@(State cube _ _):qs)
---     | cube == goal = state
---     | otherwise = bfs goal newSeen newQueue
+-- bfs :: (Cube -> Bool) -> Set.Set Cube -> [State] -> State
+-- bfs isGoal seen (state@(State cube _ _):qs)
+--     | isGoal cube = state
+--     | otherwise = bfs isGoal newSeen newQueue
 --         where
 --             newMoves = filter (\(cube, name) -> not (Set.member cube seen)) (applyMoves cube)
 --             newSeen = Set.union seen (Set.fromList (map fst newMoves))
@@ -56,4 +56,4 @@ solveBfs cube = reverse $ extractSolution (bfs solved Set.empty (Seq.singleton (
 -- extractSolution (State _ state move) = move:extractSolution state
 
 -- solveBfs :: Cube -> [String]
--- solveBfs cube = reverse $ extractSolution (bfs solved Set.empty [State cube Nill ""])
+-- solveBfs cube = reverse $ extractSolution (bfs isSolved Set.empty [State cube Nill ""])

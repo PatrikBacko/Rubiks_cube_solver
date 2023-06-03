@@ -3,32 +3,56 @@ import Cube
 import Moves
 import qualified Data.Set as Set
 
-
 --------------------------------------------------------------------------------
---Human approach useful moves
+-- Human approach
 --------------------------------------------------------------------------------
 
--- moves stage 1
--- humanStage1Moves :: [(String, Cube -> Cube)]
--- humanStage1Moves = [
-
---     ]
-
-
-
+solveHuman :: Cube -> String
+solveHuman cube = concat $ drop 1 $ reverse $ extractSolution stateFinal
+    where
+        state1 = solveHumanStage1 (State cube Nill "")
+        state2 = solveHumanStage2 state1
+        state3 = solveHumanStage3 state2
+        stateFinal = solveHumanStage4 state3
 
 
 
 solveHumanStage1 :: State -> State
-solveHumanStage1 state = bfs Set.empty (state) basicMoves
+solveHumanStage1 state = stateFinal
+    where
+        state1 = startBfs state isHumanStage1v1 basicMoves
+        state2 = startBfs state1 isHumanStage1v2 basicMoves
+        state3 = startBfs state2 isHumanStage1v3 basicMoves
+        stateFinal = startBfs state3 isHumanStage1v4 basicMoves
+
+solveHumanStage2 :: State -> State
+solveHumanStage2 state = stateFinal
+    where
+        state1 = startBfs state isHumanStage2v1 basicMoves
+        state2 = startBfs state1 isHumanStage2v2 basicMoves
+        state3 = startBfs state2 isHumanStage2v3 basicMoves
+        stateFinal = startBfs state3 isHumanStage2v4 basicMoves  
+
+solveHumanStage3 :: State -> State
+solveHumanStage3 state = stateFinal
+    where
+        state1 = startBfs state isHumanStage3v1 basicMoves
+        state2 = startBfs state1 isHumanStage3v2 basicMoves
+        state3 = startBfs state2 isHumanStage3v3 basicMoves
+        stateFinal = startBfs state3 isHumanStage3v4 basicMoves
+
+solveHumanStage4 :: State -> State
+solveHumanStage4 state = stateFinal
+    where
+        state1 = startBfs state isHumanStage4v1 basicMoves
+        state2 = startBfs state1 isHumanStage4v2 basicMoves
+        state3 = startBfs state2 isHumanStage4v3 basicMoves
+        stateFinal = startBfs state3 isHumanStage4v4 basicMoves
 
 
-
-
-
-
-
-
+--------------------------------------------------------------------------------
+-- Human approach useful moves
+--------------------------------------------------------------------------------
 
 
 
@@ -243,4 +267,3 @@ isHumanStage4v4 (
         (Y,Y,Y,Y,Y,Y,Y,Y,Y)
     ) = True
 isHumanStage4v4 _ = False
-
