@@ -10,14 +10,25 @@ type Tile = Color
 data Color = W | Y | R | O | B | G
     deriving (Show, Eq, Ord)
 
-solved :: Cube
-solved = (
-        (W, W, W, W, W, W, W, W, W), 
-        (G, G, G, G, G, G, G, G, G),
-        (R, R, R, R, R, R, R, R, R),
-        (B, B, B, B, B, B, B, B, B),
-        (O, O, O, O, O, O, O, O, O),
-        (Y, Y, Y, Y, Y, Y, Y, Y, Y)
+isSolved :: Cube -> Bool
+isSolved (
+        (W,W,W,W,W,W,W,W,W), 
+        (G,G,G,G,G,G,G,G,G),
+        (R,R,R,R,R,R,R,R,R),
+        (B,B,B,B,B,B,B,B,B),
+        (O,O,O,O,O,O,O,O,O),
+        (Y,Y,Y,Y,Y,Y,Y,Y,Y)
+        ) = True
+isSolved _ = False
+
+solvedCube :: Cube
+solvedCube = (
+        (W,W,W,W,W,W,W,W,W), 
+        (G,G,G,G,G,G,G,G,G),
+        (R,R,R,R,R,R,R,R,R),
+        (B,B,B,B,B,B,B,B,B),
+        (O,O,O,O,O,O,O,O,O),
+        (Y,Y,Y,Y,Y,Y,Y,Y,Y)
     )
 
 r1 :: Cube
