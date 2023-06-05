@@ -43,7 +43,7 @@ bfs seen queue isGoal moves
         where
             (state@(State cube _ _), qs) = dequeue queue
             newMoves = filter (\(cube, name) -> not (Set.member cube seen)) (applyMoves cube moves)
-            newSeen = seen -- Set.union seen (Set.fromList (map fst newMoves))
+            newSeen = seen
             newQueue = enqueueList (map (\(cube, name) -> State cube state name) newMoves) qs
 
 startBfs :: State -> (Cube -> Bool) -> [(String ,Cube -> Cube)] -> State

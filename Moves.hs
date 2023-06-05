@@ -3,23 +3,7 @@ module Moves where
 
 import Cube
 
--- moves :: [(String ,Cube -> Cube)]
--- moves = [
---     ("u", u), 
---     ("d", d), 
---     ("l", l), 
---     ("r", r), 
---     ("f", f), 
---     ("b", b), 
---     ("u'", u'), 
---     ("d'", d'), 
---     ("l'", l'), 
---     ("r'", r'), 
---     ("f'", f'), 
---     ("b'", b')
---     ]
-
--- maybe pridať datastructure Move, ktorá bude obsahovať názov a funkciu
+--List of basic moves
 basicMoves :: [(String ,Cube -> Cube)]
 basicMoves = [
     ("u", u), 
@@ -36,7 +20,12 @@ basicMoves = [
     ("b'", b')
     ]
 
---Clockwise moves of the cube
+
+----------------------------------------------------------------------------------------------------------------------------------------
+-- Basic moves definitions
+----------------------------------------------------------------------------------------------------------------------------------------
+
+-- clockwise up
 u :: Cube -> Cube
 u  (
         (w1, w2, w3, w4, w5, w6, w7, w8, w9),
@@ -55,6 +44,7 @@ u  (
         f6
     )
 
+-- clockwise down
 d :: Cube -> Cube
 d (
         f1, 
@@ -73,6 +63,7 @@ d (
         (y3, y6, y9, y2, y5, y8, y1, y4, y7)
     )
 
+-- clockwise left
 l :: Cube -> Cube
 l (
         (w1, w2, w3, w4, w5, w6, w7, w8, w9), 
@@ -91,6 +82,7 @@ l (
         (r1, y2, y3, r4, y5, y6, r7, y8, y9)
     )
 
+-- clockwise right
 r :: Cube -> Cube
 r (
         (w1, w2, w3, w4, w5, w6, w7, w8, w9), 
@@ -109,6 +101,7 @@ r (
         (y1, y2, o7, y4, y5, o4, y7, y8, o1)
     )
 
+-- clockwise front
 f :: Cube -> Cube
 f (
         (w1, w2, w3, w4, w5, w6, w7, w8, w9), 
@@ -126,6 +119,8 @@ f (
         f5, 
         (b7, b4, b1, y4, y5, y6, y7, y8, y9)
     )
+
+-- clockwise back
 b :: Cube -> Cube
 b (
         (w1, w2, w3, w4, w5, w6, w7, w8, w9), 
@@ -144,7 +139,7 @@ b (
         (y1, y2, y3, y4, y5, y6, b9, b6, b3)
     )
 
---Counter-clockwise moves of the cube
+-- counter-clockwise up
 u' :: Cube -> Cube
 u'  (
         (w7, w4, w1, w8, w5, w2, w9, w6, w3),
@@ -163,6 +158,7 @@ u'  (
         f6
     )
 
+-- counter-clockwise down
 d' :: Cube -> Cube
 d' (
         f1, 
@@ -181,6 +177,7 @@ d' (
         (y1, y2, y3, y4, y5, y6, y7, y8, y9)
     )
 
+-- counter-clockwise left
 l' :: Cube -> Cube
 l' (
         (o9, w2, w3, o6, w5, w6, o3, w8, w9), 
@@ -199,6 +196,7 @@ l' (
         (y1, y2, y3, y4, y5, y6, y7, y8, y9)
     )
 
+-- counter-clockwise right
 r' :: Cube -> Cube
 r' (
         (w1, w2, r3, w4, w5, r6, w7, w8, r9), 
@@ -217,6 +215,7 @@ r' (
         (y1, y2, y3, y4, y5, y6, y7, y8, y9)
     )
 
+-- counter-clockwise front
 f' :: Cube -> Cube
 f' (
         (w1, w2, w3, w4, w5, w6, g9, g6, g3), 
@@ -234,6 +233,8 @@ f' (
         f5, 
         (y1, y2, y3, y4, y5, y6, y7, y8, y9)
     )
+
+-- counter-clockwise back
 b' :: Cube -> Cube
 b' (
         (g7, g4, g1, w4, w5, w6, w7, w8, w9), 

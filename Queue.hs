@@ -1,6 +1,5 @@
 module Queue where
 
-
 type Queue a = ([a], [a])
 
 empty :: Queue a
