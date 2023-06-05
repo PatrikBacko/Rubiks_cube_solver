@@ -50,4 +50,3 @@ r2 = (
         (G,G,G,O,O,O,R,R,O),
         (W,Y,Y,W,Y,Y,W,Y,Y)
     )
-

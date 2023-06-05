@@ -1,3 +1,5 @@
+module Human_approach where
+
 import Bfs
 import Cube
 import Moves
@@ -8,55 +10,157 @@ import qualified Data.Set as Set
 --------------------------------------------------------------------------------
 
 solveHuman :: Cube -> String
-solveHuman cube = concat $ drop 1 $ reverse $ extractSolution stateFinal
+solveHuman cube = concat $ reverse $ extractSolution stateFinal
     where
-        state1 = solveHumanStage1 (State cube Nill "")
+        state1 = solveHumanStage1 state
         state2 = solveHumanStage2 state1
         state3 = solveHumanStage3 state2
         stateFinal = solveHumanStage4 state3
+        state = State cube Nill ""
+
+sH :: Cube -> Cube
+sH cube = finalCube
+    where
+        state1 = solveHumanStage1 state
+        state2 = solveHumanStage2 state1
+        state3 = solveHumanStage3 state2
+        stateFinal@(State finalCube _ _) = solveHumanStage4 state3
+        state = State cube Nill ""
 
 
 
 solveHumanStage1 :: State -> State
 solveHumanStage1 state = stateFinal
     where
-        state1 = startBfs state isHumanStage1v1 basicMoves
-        state2 = startBfs state1 isHumanStage1v2 basicMoves
-        state3 = startBfs state2 isHumanStage1v3 basicMoves
-        stateFinal = startBfs state3 isHumanStage1v4 basicMoves
+        state1 = startBfs state isHumanStage1v1 (basicMoves ++ humanMovesStage1)
+        state2 = startBfs state1 isHumanStage1v2 (basicMoves ++ humanMovesStage1)
+        state3 = startBfs state2 isHumanStage1v3 (basicMoves ++ humanMovesStage1)
+        stateFinal = startBfs state3 isHumanStage1v4 (basicMoves ++ humanMovesStage1)
 
 solveHumanStage2 :: State -> State
 solveHumanStage2 state = stateFinal
     where
-        state1 = startBfs state isHumanStage2v1 basicMoves
-        state2 = startBfs state1 isHumanStage2v2 basicMoves
-        state3 = startBfs state2 isHumanStage2v3 basicMoves
-        stateFinal = startBfs state3 isHumanStage2v4 basicMoves  
+        state1 = startBfs state isHumanStage2v1 humanMovesStage2
+        state2 = startBfs state1 isHumanStage2v2 humanMovesStage2
+        state3 = startBfs state2 isHumanStage2v3 humanMovesStage2
+        stateFinal = startBfs state3 isHumanStage2v4 humanMovesStage2
 
 solveHumanStage3 :: State -> State
 solveHumanStage3 state = stateFinal
     where
-        state1 = startBfs state isHumanStage3v1 basicMoves
-        state2 = startBfs state1 isHumanStage3v2 basicMoves
-        state3 = startBfs state2 isHumanStage3v3 basicMoves
-        stateFinal = startBfs state3 isHumanStage3v4 basicMoves
+        state1 = startBfs state isHumanStage3v1 humanMovesStage3
+        state2 = startBfs state1 isHumanStage3v2 humanMovesStage3
+        state3 = startBfs state2 isHumanStage3v3 humanMovesStage3
+        stateFinal = startBfs state3 isHumanStage3v4 humanMovesStage3
 
 solveHumanStage4 :: State -> State
 solveHumanStage4 state = stateFinal
     where
-        state1 = startBfs state isHumanStage4v1 basicMoves
-        state2 = startBfs state1 isHumanStage4v2 basicMoves
-        state3 = startBfs state2 isHumanStage4v3 basicMoves
-        stateFinal = startBfs state3 isHumanStage4v4 basicMoves
+        state1 = startBfs state isHumanStage4v1 humanMovesStage4v1
+        stateFinal = startBfs state1 isHumanStage4v2 humanMovesStage4v2
+        -- state3 = startBfs state2 isHumanStage4v3 humanMovesStage4v3
+        -- stateFinal = startBfs state3 isHumanStage4v4 humanMovesStage4v4
 
 
 --------------------------------------------------------------------------------
--- Human approach useful moves
+-- Human approach useful moves for every stage
 --------------------------------------------------------------------------------
 
+humanMovesStage1 :: [(String, Cube -> Cube)]
+humanMovesStage1 = [
+            ("u u", u . u),
+            ("d d", d . d),
+            ("r r", r . r),
+            ("l l", l . l),
+            ("f f", f . f),
+            ("b b", b . b),
 
+            ("u' r u", u' . r . u),
+            ("u r' u'", u . r' . u'),
+            ("u' l u", u' . l . u),
+            ("u l' u'", u . l' . u'),
+            ("u' f u", u' . f . u),
+            ("u f' u'", u . f' . u'),
+            ("u b u'", u . b . u'),
+            ("u' b' u", u' . b' . u)
+        ]
 
+humanMovesStage2 :: [(String, Cube -> Cube)]
+humanMovesStage2 = [
+            ("d", d),
+            ("d'", d'),
+            ("d d", d . d),
 
+            ("r' d r", r' . d . r),
+            ("r' d' r", r' . d' . r),
+
+            ("l d l'", l . d . l'),
+            ("l d' l'", l . d' . l'),
+            
+            ("r d r'", r . d . r'),
+            ("r d' r'", r . d' . r'),
+
+            ("l' d l", l' . d . l),
+            ("l' d' l", l' . d' . l),
+
+            ("d' r d d r'", d' . r . d . d . r'),
+            ("d l' d d l", d . l' . d . d . l),
+            ("d r' d d r", d . r' . d . d . r),
+            ("d' l d d l'", d' . l . d . d . l')
+        ]
+    
+humanMovesStage3 :: [(String, Cube -> Cube)]
+humanMovesStage3 = [
+            ("d", d),
+            ("d'", d'),
+            ("d d", d . d),
+
+            ("f' d f d' r d' r'", f' . d . f . d' . r . d' . r'), 
+            ("f d' f' d l' d l", f . d' . f' . d . l' . d . l),
+            ("r d' r' d f' d f", r . d' . r' . d . f' . d . f),
+            ("l' d l d' f d' f'", l' . d . l . d' . f . d' . f'),
+            ("b' d' b d r' d r", b' . d' . b . d . r' . d . r),
+            ("b d b' d' l d' l'", b . d . b' . d' . l . d' . l'),
+            ("r' d r d' b' d' b", r' . d . r . d' . b' . d' . b),
+            ("l d' l' d b d b'", l . d' . l' . d . b . d . b')
+        ]
+
+humanMovesStage4v1 :: [(String, Cube -> Cube)]
+humanMovesStage4v1 = [
+            ("d", d),
+            ("d'", d'),
+            ("d d", d . d),
+
+            ("f' d' l' d l f", f' . d' . l' . d . l . f),
+            ("f' l' d' l d f", f' . l' . d' . l . d . f)
+        ]
+
+humanMovesStage4v2 :: [(String, Cube -> Cube)]
+humanMovesStage4v2 = [
+            ("d", d),
+            ("d'", d'),
+            ("d d", d . d),
+
+            ("r d' l' d r' d' l", r . d' . l' . d . r' . d' . l)
+        ]
+
+humanMovesStage4v3 :: [(String, Cube -> Cube)]
+humanMovesStage4v3 = [
+            ("d", d),
+            ("d'", d'),
+            ("d d", d . d),
+
+            ("f' l' d l d' l' d' l l f l' d' l' d l", f' . l' . d . l . d' . l' . d' . l . l . f . l' . d' . l' . d . l)
+        ]
+
+humanMovesStage4v4 :: [(String, Cube -> Cube)]
+humanMovesStage4v4 = [
+            ("d", d),
+            ("d'", d'),
+            ("d d", d . d),
+
+            ("l' l' d' l' d' l d l d l d' l", l' . l' . d' . l' . d' . l . d . l . d . l . d' . l)
+        ]
 
 --------------------------------------------------------------------------------
 -- Human appproach stage 1 - white cross 
