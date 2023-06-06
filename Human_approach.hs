@@ -8,8 +8,9 @@ import Moves
 -- Human approach
 --------------------------------------------------------------------------------
 
+-- solveHuman: solve the cube using the human approach and return the solution (moves)
 solveHuman :: Cube -> String
-solveHuman cube = concat $ reverse $ extractSolution stateFinal
+solveHuman cube = concat $ drop 1 $ reverse $ extractSolution stateFinal
     where
         state1 = solveHumanStage1 state
         state2 = solveHumanStage2 state1
@@ -17,8 +18,10 @@ solveHuman cube = concat $ reverse $ extractSolution stateFinal
         stateFinal = solveHumanStage4 state3
         state = State cube Nill ""
 
-sH :: Cube -> Cube
-sH cube = finalCube
+
+-- test/debug function
+solveHumanDebug :: Cube -> Cube
+solveHumanDebug cube = finalCube
     where
         state1 = solveHumanStage1 state
         state2 = solveHumanStage2 state1
@@ -27,7 +30,7 @@ sH cube = finalCube
         state = State cube Nill ""
 
 
-
+-- solveHumanStage1: solve the first stage of the human approach
 solveHumanStage1 :: State -> State
 solveHumanStage1 state = stateFinal
     where
@@ -36,6 +39,7 @@ solveHumanStage1 state = stateFinal
         state3 = startBfs state2 isHumanStage1v3 (basicMoves ++ humanMovesStage1)
         stateFinal = startBfs state3 isHumanStage1v4 (basicMoves ++ humanMovesStage1)
 
+-- solveHumanStage2: solve the second stage of the human approach
 solveHumanStage2 :: State -> State
 solveHumanStage2 state = stateFinal
     where
@@ -44,6 +48,7 @@ solveHumanStage2 state = stateFinal
         state3 = startBfs state2 isHumanStage2v3 humanMovesStage2
         stateFinal = startBfs state3 isHumanStage2v4 humanMovesStage2
 
+-- solveHumanStage3: solve the third stage of the human approach
 solveHumanStage3 :: State -> State
 solveHumanStage3 state = stateFinal
     where
@@ -52,6 +57,7 @@ solveHumanStage3 state = stateFinal
         state3 = startBfs state2 isHumanStage3v3 humanMovesStage3
         stateFinal = startBfs state3 isHumanStage3v4 humanMovesStage3
 
+-- solveHumanStage4: solve the fourth stage of the human approach
 solveHumanStage4 :: State -> State
 solveHumanStage4 state = stateFinal
     where
@@ -259,7 +265,7 @@ isHumanStage4v3 (
     ) = True
 isHumanStage4v3 _ = False
 
--- whole cube
+-- whole cube done
 isHumanStage4v4 :: Cube -> Bool
 isHumanStage4v4 (
         (W,W,W,W,W,W,W,W,W),
@@ -273,7 +279,7 @@ isHumanStage4v4 _ = False
 
 
 --------------------------------------------------------------------------------
--- Human approach useful moves for every stage
+-- Human approach useful and more advanced moves for every stage
 --------------------------------------------------------------------------------
 
 humanMovesStage1 :: [(String, Cube -> Cube)]
