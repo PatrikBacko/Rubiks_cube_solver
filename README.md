@@ -96,7 +96,7 @@ We have a defined types and data structures:
     - first, we make a state out of given cube and add it to a queue
     - then we pop a state from a queue, check if it is a solved cube:
         - if yes, we end, and return this state. with another function `extractSolution` we extract moves from this state and return them (we can do this, because we store previous state and move that got us here in each state) 
-        - in no we generate all possible states from it by applying all moves which are given to to bfs algoritm
+        - if not, we generate new states by applying possible moves to this state and filter out states that we already visited
     - then we add these states to a set of visited states and to end of a queue
     - we repeat this process until we find a state which is solved
 - **Human approach** - uses human approach to solve a cube
