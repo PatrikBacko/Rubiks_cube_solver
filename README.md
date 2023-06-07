@@ -11,7 +11,7 @@ We have a defined types and data structures:
     - data structure which represents color tile in a face
     - Can be one of 6 possible colors in a Rubik's cube: Red, Green, Blue, Yellow, Orange, White
 
-![Structure](https://github.com/PatrikBacko/Rubiks_cube_solver/blob/master/docs/images/structure.png)
+![Structure](docs/images/structure.png)
 
 
 ## **Moves**
@@ -20,19 +20,19 @@ We have a defined types and data structures:
 ![clockwise_UP](docs/images/clockwise_UP.png)
    
 ### `d` - clockwise down 
-![clockwise_DOWN](https://github.com/PatrikBacko/Rubiks_cube_solver/blob/master/docs/images/clockwise_DOWN.png)
+![clockwise_DOWN](docs/images/clockwise_DOWN.png)
 
 ### `l` - clockwise left
-![clockwise_LEFT](https://github.com/PatrikBacko/Rubiks_cube_solver/blob/master/docs/images/clockwise_LEFT.png)
+![clockwise_LEFT](docs/images/clockwise_LEFT.png)
 
 ### `r` - clockwise right
-![clockwise_RIGHT](https://github.com/PatrikBacko/Rubiks_cube_solver/blob/master/docs/images/clockwise_RIGHT.png)
+![clockwise_RIGHT](docs/images/clockwise_RIGHT.png)
 
 ### `f` - clockwise front
-![clockwise_FRONT](https://github.com/PatrikBacko/Rubiks_cube_solver/blob/master/docs/images/clockwise_FRONT.png)
+![clockwise_FRONT](docs/images/clockwise_FRONT.png)
 
 ### `b` - clockwise back
-![clockwise_BACK](https://github.com/PatrikBacko/Rubiks_cube_solver/blob/master/docs/images/clockwise_BACK.png)
+![clockwise_BACK](docs/images/clockwise_BACK.png)
 
 ### counter-clockwise moves {`u'`, `d'`, `l'`, `r'`, `f'`, `b'`} are just inverse of clockwise moves 
 
