@@ -17,7 +17,7 @@ We have a defined types and data structures:
 ## **Moves**
 
 ### `u` - clockwise up
-![clockwise_UP](https://github.com/PatrikBacko/Rubiks_cube_solver/blob/master/docs/images/clockwise_UP.png)
+![clockwise_UP](docs/images/clockwise_UP.png)
    
 ### `d` - clockwise down 
 ![clockwise_DOWN](https://github.com/PatrikBacko/Rubiks_cube_solver/blob/master/docs/images/clockwise_DOWN.png)
