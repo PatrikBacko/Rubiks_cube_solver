@@ -2,7 +2,7 @@
 Implementation of Rubiks cube solver in Haskell
 
 ## **Representation of a Cube**
-We have a defined types and data structures: 
+We have defined types and data structures: 
 - `type Cube = (face, face, face, face, face, face)`
     - type which consists of 6 faces
 - `type Face = (color, color, color, color, color, color, color, color, color)`
