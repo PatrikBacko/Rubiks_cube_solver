@@ -4,12 +4,8 @@ module Cube where
 -- Cube: a cube data structure, uses six faces to implement a cube
 type Cube = (Face, Face, Face, Face, Face, Face)
 
--- Face: a face data structure, uses nine tiles to implement a face
-type Face = (Tile, Tile, Tile, Tile, Tile, Tile, Tile, Tile, Tile)
-
-
--- Tile: a tile data structure, uses six colors to implement a tile
-type Tile = Color
+-- Face: a face data structure, uses nine instances of color to implement a face
+type Face = (Color, Color, Color, Color, Color, Color, Color, Color, Color)
 
 -- Color: a color data structure, uses six colors to implement a color
 data Color = W | Y | R | O | B | G
