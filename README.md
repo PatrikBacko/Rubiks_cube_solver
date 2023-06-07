@@ -3,13 +3,24 @@ Implementation of Rubiks cube solver in Haskell
 
 ## **Representation of a Cube**
 We have a defined types and data structures: 
-- `Cube` - `(face, face, face, face, face, face)`
+- `type Cube = (face, face, face, face, face, face)`
     - type which consists of 6 faces
-- `Face` - `(color, color, color, color, color, color, color, color, color)`
+- `type Face = (color, color, color, color, color, color, color, color, color)`
     - type which consists of 9 colors
-- `Color` - `W | R | G | B | Y | O`
+- `data Color = W | R | G | B | Y | O`
     - data structure which represents color tile in a face
     - Can be one of 6 possible colors in a Rubik's cube: Red, Green, Blue, Yellow, Orange, White
+
+
+( 
+    (w1, w2, w3, w4, w5, w6, w7, w8, w9), 
+    (g1, g2, g3, g4, g5, g6, g7, g8, g9), 
+    (r1, r2, r3, r4, r5, r6, r7, r8, r9), 
+    (b1, b2, b3, b4, b5, b6, b7, b8, b9), 
+    (o1, o2, o3, o4, o5, o6, o7, o8, o9), 
+    (y1, y2, y3, y4, y5, y6, y7, y8, y9) 
+)
+
 
 ![Structure](docs/images/structure.png)
 
