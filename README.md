@@ -1,5 +1,5 @@
 # **Rubiks cube solver**
-Implementation of Rubiks cube solver in Haskell
+Implementation of Rubik's cube solver in Haskell
 
 ## **Representation of a Cube**
 We have defined types and data structures: 
@@ -8,8 +8,8 @@ We have defined types and data structures:
 - `type Face = (color, color, color, color, color, color, color, color, color)`
     - type which consists of 9 colors
 - `data Color = W | R | G | B | Y | O`
-    - data structure which represents color tile in a face
-    - Can be one of 6 possible colors in a Rubik's cube: Red, Green, Blue, Yellow, Orange, White
+    - data structure which represents color of a tile in a face
+    - Can be one of 6 possible colors: Red, Green, Blue, Yellow, Orange, White
 
 
 ( 
@@ -60,6 +60,7 @@ We have defined types and data structures:
 
 ## **How to use it**
 - clone this repository
+- install [Haskell](https://www.haskell.org/ghcup/) (if you don't have it already)
 - open terminal in the root of this repository
 - run command `ghci`
 - run command `:l src/Main.hs`
