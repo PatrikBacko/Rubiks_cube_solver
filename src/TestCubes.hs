@@ -1,11 +1,11 @@
 module TestCubes where
 
-import Cube
-import Moves
+import Cube (Cube, Color(..), solved)
+import Moves (u, u', d, d', l, l', r, r', f, f', b, b')
 
 -- generateCube: generate a cube using a list of moves
 generateCube :: [Cube -> Cube] -> Cube
-generateCube moves = generateCube' solvedCube moves
+generateCube moves = generateCube' solved moves
     where 
         generateCube' cube [] = cube
         generateCube' cube (move:moves) = generateCube' (move cube) moves

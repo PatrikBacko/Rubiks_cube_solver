@@ -1,8 +1,8 @@
 module Human_approach where
 
-import Bfs
-import Cube
-import Moves
+import Bfs ( extractSolution, startBfs, State(..) ) 
+import Cube ( Color(Y, W, G, R, B, O), Cube ) 
+import Moves ( b, b', d, d', f, f', l, l', r, r', u, u', basicMoves )
 
 --------------------------------------------------------------------------------
 -- Human approach

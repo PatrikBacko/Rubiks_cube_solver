@@ -1,7 +1,7 @@
 -- Moves.hs
 module Moves where
 
-import Cube
+import Cube (Cube)
 
 --List of basic moves
 basicMoves :: [(String ,Cube -> Cube)]

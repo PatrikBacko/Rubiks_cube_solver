@@ -23,9 +23,9 @@ isSolved (
         ) = True
 isSolved _ = False
 
--- solvedCube: a solved cube
-solvedCube :: Cube
-solvedCube = (
+-- solved: a solved cube
+solved :: Cube
+solved = (
         (W,W,W,W,W,W,W,W,W), 
         (G,G,G,G,G,G,G,G,G),
         (R,R,R,R,R,R,R,R,R),

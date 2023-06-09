@@ -1,5 +1,5 @@
 import Bfs ( solveBfs )
-import Cube ( solvedCube )
+import Cube ( solved )
 import Human_approach ( solveHuman, solveHumanDebug )
 import Moves ( u, u', d, d', l, l', r, r', f, f', b, b' )
 import TestCubes (generateCube, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14)
@@ -10,13 +10,14 @@ import TestCubes (generateCube, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r1
 ------------------------------------------------------------------------------------------------------------------------
 
 -- How to run:
--- using ghci load main.hs
--- now you can run the following functions:
---      - solveBfs <Cube> : Bfs approach to solve the cube, returns the moves
---      - solveHuman <Cube> : Human approach to solve the cube, returns the moves
+--      - open terminal in in folder src
+--      - using ghci load main.hs
+--      - now you can run the following functions:
+--          - solveBfs <Cube> : Bfs approach to solve the cube, returns the moves
+--          - solveHuman <Cube> : Human approach to solve the cube, returns the moves
 
 -- Cube:
---      - solvedCube : the solved cube
+--      - solved : the solved cube
 --      - Test cubes:
 --          - r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14
 --      - Generate a cube:

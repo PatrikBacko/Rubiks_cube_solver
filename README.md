@@ -61,9 +61,9 @@ We have defined types and data structures:
 ## **How to use it**
 - clone this repository
 - install [Haskell](https://www.haskell.org/ghcup/) (if you don't have it already)
-- open terminal in the root of this repository
+- open terminal in src folder of this repository
 - run command `ghci`
-- run command `:l src/Main.hs`
+- run command `:l Main.hs`
 - run command `solveBfs cube` or `solveHuman cube` where cube is a cube you want to solve
 
 
@@ -75,7 +75,7 @@ We have defined types and data structures:
 ### Test Cubes
 |  |  |  |
 |--|--|--|
-|`solvedCube`|=|( (W,W,W,W,W,W,W,W,W), (G,G,G,G,G,G,G,G,G), (R,R,R,R,R,R,R,R,R), (B,B,B,B,B,B,B,B,B), (O,O,O,O,O,O,O,O,O), (Y,Y,Y,Y,Y,Y,Y,Y,Y) )|
+|`r`|=|( (W,W,W,W,W,W,W,W,W), (G,G,G,G,G,G,G,G,G), (R,R,R,R,R,R,R,R,R), (B,B,B,B,B,B,B,B,B), (O,O,O,O,O,O,O,O,O), (Y,Y,Y,Y,Y,Y,Y,Y,Y) )|
 |`r1`|=|( (W,W,W,W,W,W,W,W,W), (R,R,R,G,G,G,G,G,G), (B,B,B,R,R,R,R,R,R), (O,O,O,B,B,B,B,B,B), (G,G,G,O,O,O,O,O,O), (Y,Y,Y,Y,Y,Y,Y,Y,Y) )|
 |`r2`|=|( (W,W,W,W,W,W,W,W,W), (R,R,R,G,G,G,R,R,R), (B,B,B,R,R,R,B,B,B), (O,O,O,B,B,B,O,O,O), (G,G,G,O,O,O,G,G,G), (Y,Y,Y,Y,Y,Y,Y,Y,Y) )|
 |`r3`|=|( (W,W,W,W,W,W,R,G,R), (R,R,Y,G,G,Y,R,R,Y), (B,R,B,B,R,B,B,R,B), (W,O,O,W,B,B,W,O,O), (G,G,G,O,O,O,G,G,G), (O,B,O,Y,Y,Y,Y,Y,Y) )|
