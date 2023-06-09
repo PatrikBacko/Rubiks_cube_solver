@@ -23,6 +23,8 @@ isSolved (
         ) = True
 isSolved _ = False
 
+-- isSolved cube = cube == solved
+
 -- solved: a solved cube
 solved :: Cube
 solved = (

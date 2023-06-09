@@ -75,7 +75,7 @@ We have defined types and data structures:
 ### Test Cubes
 |  |  |  |
 |--|--|--|
-|`r`|=|( (W,W,W,W,W,W,W,W,W), (G,G,G,G,G,G,G,G,G), (R,R,R,R,R,R,R,R,R), (B,B,B,B,B,B,B,B,B), (O,O,O,O,O,O,O,O,O), (Y,Y,Y,Y,Y,Y,Y,Y,Y) )|
+|`solved`|=|( (W,W,W,W,W,W,W,W,W), (G,G,G,G,G,G,G,G,G), (R,R,R,R,R,R,R,R,R), (B,B,B,B,B,B,B,B,B), (O,O,O,O,O,O,O,O,O), (Y,Y,Y,Y,Y,Y,Y,Y,Y) )|
 |`r1`|=|( (W,W,W,W,W,W,W,W,W), (R,R,R,G,G,G,G,G,G), (B,B,B,R,R,R,R,R,R), (O,O,O,B,B,B,B,B,B), (G,G,G,O,O,O,O,O,O), (Y,Y,Y,Y,Y,Y,Y,Y,Y) )|
 |`r2`|=|( (W,W,W,W,W,W,W,W,W), (R,R,R,G,G,G,R,R,R), (B,B,B,R,R,R,B,B,B), (O,O,O,B,B,B,O,O,O), (G,G,G,O,O,O,G,G,G), (Y,Y,Y,Y,Y,Y,Y,Y,Y) )|
 |`r3`|=|( (W,W,W,W,W,W,R,G,R), (R,R,Y,G,G,Y,R,R,Y), (B,R,B,B,R,B,B,R,B), (W,O,O,W,B,B,W,O,O), (G,G,G,O,O,O,G,G,G), (O,B,O,Y,Y,Y,Y,Y,Y) )|

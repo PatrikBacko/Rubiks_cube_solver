@@ -20,7 +20,7 @@ bfs seen queue isGoal moves
         where
             (state@(State cube _ _), qs) = dequeue queue
             newMoves = filter (\(cube, name) -> not (Set.member cube seen)) (applyMoves cube moves)
-            newSeen = seen
+            newSeen = seen `Set.union` Set.fromList (map fst newMoves)
             newQueue = enqueueList (map (\(cube, name) -> State cube state name) newMoves) qs
 
 -- startBfs: start the breadth first search
